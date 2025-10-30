@@ -1,3 +1,26 @@
+// // import 'package:bloc/bloc.dart';
+// // import 'package:hive_flutter/adapters.dart';
+// // import 'package:meta/meta.dart';
+// // import 'package:note/costants.dart';
+// // import 'package:note/models/note_model.dart';
+
+// // part 'add_note_state.dart';
+
+// // class AddNoteCubit extends Cubit<AddNoteState> {
+// //   AddNoteCubit() : super(AddNoteInitial());
+
+// //   addNote(NoteModel note) async {
+// //     emit(AddNoteLoading());
+// //     try {
+// //       var notesBox = Hive.box<NoteModel>(kNotesBox);
+// //       emit(AddNoteSuccess());
+
+// //       await notesBox.add(note);
+// //     } catch (e) {
+// //       AddNoteFaillure(e.toString());
+// //     }
+// //   }
+// // }
 // import 'package:bloc/bloc.dart';
 // import 'package:hive_flutter/adapters.dart';
 // import 'package:meta/meta.dart';
@@ -9,15 +32,15 @@
 // class AddNoteCubit extends Cubit<AddNoteState> {
 //   AddNoteCubit() : super(AddNoteInitial());
 
-//   addNote(NoteModel note) async {
+//   void addNote(NoteModel note) async {
 //     emit(AddNoteLoading());
 //     try {
 //       var notesBox = Hive.box<NoteModel>(kNotesBox);
-//       emit(AddNoteSuccess());
 
 //       await notesBox.add(note);
+//       emit(AddNoteSuccess());
 //     } catch (e) {
-//       AddNoteFaillure(e.toString());
+//       emit(AddNoteFaillure(error: e.toString()));
 //     }
 //   }
 // }
