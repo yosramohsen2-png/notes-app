@@ -23,15 +23,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autovalidateMode: autovalidateMode,
       child: Column(
         children: [
           const SizedBox(height: 32),
 
           CustomTextField(
             hint: 'title',
-            onSaved: (value) {
+            onChanged: (value) {
               title = value;
             },
           ),
@@ -39,7 +38,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomTextField(
             hint: 'content',
             maxLines: 5,
-            onSaved: (value) {
+            onChanged: (value) {
               subtitle = value;
             },
           ),
@@ -50,8 +49,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-
+                    // Logics for adding note
                     var formateCurrentdate = DateFormat(
                       'dd-MM-yyyy',
                     ).format(DateTime.now()).toString();
@@ -63,12 +61,15 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(notemodel);
                   } else {
-                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
                   }
                 },
               );
             },
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );
