@@ -22,7 +22,7 @@ class NotesListView extends StatelessWidget {
 
         if (notes.isEmpty) {
           // ممكن هنا تعرض رسالة "مفيش ملاحظات"
-          return const Center(child: Text('مفيش ملاحظات لحد دلوقتي!'));
+          return const Center(child: Text('There are no notes yet.'));
         }
 
         return Padding(
