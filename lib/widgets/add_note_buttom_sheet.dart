@@ -66,6 +66,7 @@ class _AddNoteButtomSheetState extends State<AddNoteButtomSheet> {
             print('Failled ${state.error}');
           }
           if (state is AddNoteSuccess) {
+            BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();
             Navigator.pop(context);
             // ✨ الخطوة الحاسمة: تحديث الـ Cubit المسؤول عن عرض النوتات
             BlocProvider.of<NotesCubitCubit>(context).fetchAllNotes();

@@ -45,30 +45,25 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          NotesCubitCubit()
-            ..fetchAllNotes(), // 💡: عشان يجلب النوتات أول ما يفتح
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-              isScrollControlled: true,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              context: context,
-              builder: (context) {
-                return const AddNoteButtomSheet();
-              },
-            );
-          },
-          child: const Icon(Icons.add), // ضفنا const
-        ),
-        // شلنا resizeToAvoidBottomInset: false,
-        extendBodyBehindAppBar: true,
-        body: const NotesViewBody(),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            context: context,
+            builder: (context) {
+              return const AddNoteButtomSheet();
+            },
+          );
+        },
+        child: const Icon(Icons.add), // ضفنا const
       ),
+      // شلنا resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
+      body: const NotesViewBody(),
     );
   }
 }
